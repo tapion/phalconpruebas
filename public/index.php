@@ -20,7 +20,7 @@ try {
             "host" => "localhost",
             "username" => "root",
             "password" => "",
-            "dbname" => "cuestionario"
+            "dbname" => "phalcon"
         ));
     });
 
@@ -30,6 +30,12 @@ try {
         $view->setViewsDir('../app/views/');
         return $view;
     });
+
+$di->set('url', function(){
+    $url = new Phalcon\Mvc\Url();
+    $url->setBaseUri('/phalcon/');
+    return $url;
+});
 
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
